@@ -1,0 +1,18 @@
+## project files
+*.iml
+*.ipr
+*.iws
+
+## build files
+build
+out
+.gradle
+.idea
+
+## log files
+logs
+
+
+.DS_Store
+.ideaDataSources
+dataSources
