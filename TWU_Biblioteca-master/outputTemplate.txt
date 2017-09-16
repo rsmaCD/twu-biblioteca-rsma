@@ -13,6 +13,13 @@ Select a valid option!
 2. Checkout Book
 3. Return Book
 4. Exit
+Please login:
+Please input your library number:
+Please input your password:
+Library Number or password error.
+Please input your library number:
+Please input your password:
+Login success.
 Please input the name of book to checkout:
 The book is not available.
 The book is not available.

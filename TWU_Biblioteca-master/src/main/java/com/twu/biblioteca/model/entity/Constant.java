@@ -20,4 +20,10 @@ public class Constant {
     public static final String RETURN_BOOK_NOTICE = "Please input the name of book to return:\n";
     public static final String RETURN_BOOK_WARNING = "That is not a available book to return.\n";
     public static final String RETURN_BOOK_SUCCESS_NOTICE = "Thank you for returning the book.\n";
+
+    public static final String LOGIN_NOTICE = "Please login:\n";
+    public static final String LOGIN_ERROR = "Library Number or password error.\n";
+    public static final String LOGIN_SUCCESS_NOTICE = "Login success.\n";
+    public static final String INPUT_LIBRARY_NUM_NOTICE = "Please input your library number:\n";
+    public static final String INPUT_PASSWORD_NOTICE = "Please input your password:\n";
 }

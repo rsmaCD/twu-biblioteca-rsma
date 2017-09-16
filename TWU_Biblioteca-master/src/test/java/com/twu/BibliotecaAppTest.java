@@ -39,7 +39,7 @@ public class BibliotecaAppTest {
 
         assertNotNull(output);
         assertNotNull(outputTemplate);
-        assertEquals(output,outputTemplate);
+        assertEquals(outputTemplate,output);
     }
 
 }

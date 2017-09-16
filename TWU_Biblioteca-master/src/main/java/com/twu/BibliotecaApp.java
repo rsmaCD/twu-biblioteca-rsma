@@ -6,6 +6,7 @@ import com.twu.biblioteca.model.command.KeyPad;
 import com.twu.biblioteca.model.entity.Command;
 import com.twu.biblioteca.model.entity.Constant;
 import com.twu.biblioteca.repo.Library;
+import com.twu.biblioteca.repo.UserRepo;
 
 public class BibliotecaApp {
 
@@ -13,6 +14,7 @@ public class BibliotecaApp {
 
     private KeyPad keyPad;
 
+    private boolean isUserLogin = false;
 
     public BibliotecaApp(IOInterface IO) {
         this.IO = IO;
@@ -30,6 +32,7 @@ public class BibliotecaApp {
     public void init(IOInterface io) {
         io.Start();
         Library.getInstance().initLibrary();
+        UserRepo.getInstance().initUserRepo();
         io.output(Constant.WELCOME_MSG);
     }
 
@@ -48,10 +51,18 @@ public class BibliotecaApp {
                 keyPad.showMenu();
                 break;
             case Command.RENT_BOOK:
+                if(!isUserLogin){
+                    keyPad.login();
+                }
+                changeUserStatus(true);
                 keyPad.rentBook();
                 keyPad.showMenu();
                 break;
             case Command.RETURN_BOOK:
+                if(!isUserLogin){
+                    keyPad.login();
+                }
+                changeUserStatus(true);
                 keyPad.returnBook();
                 keyPad.showMenu();
                 break;
@@ -61,5 +72,9 @@ public class BibliotecaApp {
             default:
                 keyPad.showNoCommandErrorMsg();
         }
+    }
+
+    private void changeUserStatus(boolean status) {
+        this.isUserLogin = status;
     }
 }
