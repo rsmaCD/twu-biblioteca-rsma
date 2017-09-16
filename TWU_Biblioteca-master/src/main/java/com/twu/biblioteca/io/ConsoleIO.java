@@ -2,9 +2,6 @@ package com.twu.biblioteca.io;
 
 import java.util.Scanner;
 
-/**
- * Created by rsma on 28/07/2017.
- */
 public class ConsoleIO implements IOInterface {
 
     @Override
@@ -24,5 +21,10 @@ public class ConsoleIO implements IOInterface {
     @Override
     public void exit() {
         System.exit(0);
+    }
+
+    @Override
+    public boolean getRunStatus() {
+        return true;
     }
 }

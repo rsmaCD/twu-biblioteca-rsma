@@ -1,8 +1,5 @@
 package com.twu.biblioteca.io;
 
-/**
- * Created by rsma on 28/07/2017.
- */
 public interface IOInterface {
 
      void Start();
@@ -12,5 +9,7 @@ public interface IOInterface {
      void output(String output);
 
      void exit();
+
+     boolean getRunStatus();
 
 }

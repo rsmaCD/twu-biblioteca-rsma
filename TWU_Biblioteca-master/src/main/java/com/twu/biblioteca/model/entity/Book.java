@@ -63,6 +63,6 @@ public class Book {
         return "  " + bookId +
                 "  " + bookName +
                 "  " + author +
-                "  " + publishDate;
+                "  " + publishDate + "\n";
     }
 }

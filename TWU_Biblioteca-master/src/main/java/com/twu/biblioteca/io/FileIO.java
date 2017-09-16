@@ -9,15 +9,14 @@ import java.util.List;
 
 import static java.nio.file.StandardOpenOption.APPEND;
 
-/**
- * Created by rsma on 29/07/2017.
- */
 public class FileIO implements IOInterface {
 
     private List<String> inputList = new ArrayList<>();
     private int location = -1;
     private String fileNameInput = "input.txt";
     private String fileNameTarget = "output.txt";
+
+    private boolean runStatus = true;
 
     @Override
     public void Start() {
@@ -48,6 +47,11 @@ public class FileIO implements IOInterface {
 
     @Override
     public void exit() {
+        this.runStatus = false;
+    }
 
+    @Override
+    public boolean getRunStatus() {
+        return runStatus;
     }
 }

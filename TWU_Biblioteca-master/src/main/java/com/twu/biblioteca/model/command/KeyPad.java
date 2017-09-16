@@ -1,5 +1,7 @@
 package com.twu.biblioteca.model.command;
 
+import com.twu.biblioteca.io.IOInterface;
+
 public class KeyPad {
 
     private MainMenuCommand mainMenuCommand;
@@ -9,29 +11,15 @@ public class KeyPad {
     private RentBookCommand rentBookCommand;
     private ReturnBookCommand returnBookCommand;
 
-    public void setMainMenuCommand(MainMenuCommand mainMenuCommand) {
-        this.mainMenuCommand = mainMenuCommand;
+    public KeyPad(IOInterface IO) {
+        mainMenuCommand = new MainMenuCommand(IO);
+        listBooksCommand = new ListBooksCommand(IO);
+        exitCommand = new ExitCommand(IO);
+        noCommand = new NoCommand(IO);
+        rentBookCommand = new RentBookCommand(IO);
+        returnBookCommand = new ReturnBookCommand(IO);
     }
 
-    public void setListBooksCommand(ListBooksCommand listBooksCommand) {
-        this.listBooksCommand = listBooksCommand;
-    }
-
-    public void setExitCommand(ExitCommand exitCommand) {
-        this.exitCommand = exitCommand;
-    }
-
-    public void setNoCommand(NoCommand noCommand) {
-        this.noCommand = noCommand;
-    }
-
-    public void setRentBookCommand(RentBookCommand rentBookCommand) {
-        this.rentBookCommand = rentBookCommand;
-    }
-
-    public void setReturnBookCommand(ReturnBookCommand returnBookCommand) {
-        this.returnBookCommand = returnBookCommand;
-    }
 
     public void listBooks(){
         listBooksCommand.execute();
