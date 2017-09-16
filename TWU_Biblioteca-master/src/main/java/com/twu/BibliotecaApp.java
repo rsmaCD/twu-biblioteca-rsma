@@ -3,12 +3,12 @@ package com.twu;
 import com.twu.biblioteca.io.ConsoleIO;
 import com.twu.biblioteca.io.IOInterface;
 import com.twu.biblioteca.model.entity.Constant;
-import com.twu.biblioteca.model.enums.Command;
-import com.twu.biblioteca.model.status.ExitCommand;
-import com.twu.biblioteca.model.status.KeyPad;
-import com.twu.biblioteca.model.status.ListBooksCommand;
-import com.twu.biblioteca.model.status.MainMenuCommand;
-import com.twu.biblioteca.model.status.NoCommand;
+import com.twu.biblioteca.model.entity.Command;
+import com.twu.biblioteca.model.command.ExitCommand;
+import com.twu.biblioteca.model.command.KeyPad;
+import com.twu.biblioteca.model.command.ListBooksCommand;
+import com.twu.biblioteca.model.command.MainMenuCommand;
+import com.twu.biblioteca.model.command.NoCommand;
 import com.twu.biblioteca.repo.Library;
 
 public class BibliotecaApp {

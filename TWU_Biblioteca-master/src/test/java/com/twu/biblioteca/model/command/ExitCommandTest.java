@@ -1,7 +1,6 @@
-package com.twu.biblioteca.model.status;
+package com.twu.biblioteca.model.command;
 
 import com.twu.biblioteca.io.IOInterface;
-import com.twu.biblioteca.model.entity.Constant;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -11,17 +10,17 @@ import org.mockito.junit.MockitoJUnitRunner;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class MainMenuCommandTest {
+public class ExitCommandTest {
 
     @Mock
     private IOInterface io;
 
     @InjectMocks
-    private MainMenuCommand mainMenuCommand = new MainMenuCommand(io);
+    private ExitCommand exitCommand = new ExitCommand(io);
 
     @Test
     public void shouldCallExit() throws Exception {
-        mainMenuCommand.execute();
-        verify(io).output(Constant.MAIN_MENU_TEMPLETE);
+        exitCommand.execute();
+        verify(io).exit();
     }
 }

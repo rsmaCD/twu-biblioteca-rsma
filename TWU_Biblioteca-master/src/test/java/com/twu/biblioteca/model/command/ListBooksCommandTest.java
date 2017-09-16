@@ -1,4 +1,4 @@
-package com.twu.biblioteca.model.status;
+package com.twu.biblioteca.model.command;
 
 import com.twu.biblioteca.io.IOInterface;
 import com.twu.biblioteca.service.LibraryService;
