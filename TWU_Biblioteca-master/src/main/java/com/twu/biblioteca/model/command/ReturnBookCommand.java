@@ -2,6 +2,7 @@ package com.twu.biblioteca.model.command;
 
 import com.twu.biblioteca.io.IOInterface;
 import com.twu.biblioteca.model.entity.Constant;
+import com.twu.biblioteca.repo.CurrentUser;
 import com.twu.biblioteca.service.LibraryService;
 
 public class ReturnBookCommand implements Command{
@@ -28,6 +29,10 @@ public class ReturnBookCommand implements Command{
 
     @Override
     public void execute() {
+        if(!CurrentUser.isCurrentUserLogin()){
+            Login login = new Login(io);
+            login.execute();
+        }
         outputNotice();
         returnBook();
     }

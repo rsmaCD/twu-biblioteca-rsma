@@ -28,14 +28,14 @@ public class UserRepo {
         userRepo.setUsers(users);
     }
 
-    public boolean checkLibraryNumAndPasswordMatch(String libraryNum, String password) {
+    public User checkLibraryNumAndPasswordMatch(String libraryNum, String password) {
 
         for (User user:users) {
             if(user.getLibraryNum().equals(libraryNum) && user.getPassword().equals(password)){
-                return true;
+                return user;
             }
         }
-        return false;
+        return null;
     }
 
     private void setUsers(List<User> users) {

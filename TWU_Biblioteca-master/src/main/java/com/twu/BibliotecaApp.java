@@ -14,8 +14,6 @@ public class BibliotecaApp {
 
     private KeyPad keyPad;
 
-    private boolean isUserLogin = false;
-
     public BibliotecaApp(IOInterface IO) {
         this.IO = IO;
         this.keyPad = new KeyPad(IO);
@@ -51,18 +49,10 @@ public class BibliotecaApp {
                 keyPad.showMenu();
                 break;
             case Command.RENT_BOOK:
-                if(!isUserLogin){
-                    keyPad.login();
-                }
-                changeUserStatus(true);
                 keyPad.rentBook();
                 keyPad.showMenu();
                 break;
             case Command.RETURN_BOOK:
-                if(!isUserLogin){
-                    keyPad.login();
-                }
-                changeUserStatus(true);
                 keyPad.returnBook();
                 keyPad.showMenu();
                 break;
@@ -72,9 +62,5 @@ public class BibliotecaApp {
             default:
                 keyPad.showNoCommandErrorMsg();
         }
-    }
-
-    private void changeUserStatus(boolean status) {
-        this.isUserLogin = status;
     }
 }

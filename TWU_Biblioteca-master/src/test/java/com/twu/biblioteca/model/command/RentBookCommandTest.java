@@ -27,8 +27,8 @@ public class RentBookCommandTest {
     @Test
     public void shouldCallLibraryServiceToGetAllAvailableBooks() throws Exception {
         when(io.getInput()).thenReturn("xxx");
-        when(libraryService.rentBook("xxx")).thenReturn(true);
         when(libraryService.isExistActiveBooks()).thenReturn(true);
+        when(libraryService.rentBook("xxx")).thenReturn(true);
         rentBookCommand.execute();
         verify(libraryService).rentBook("xxx");
     }

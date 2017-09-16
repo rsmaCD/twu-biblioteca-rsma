@@ -3,8 +3,8 @@ package com.twu.biblioteca.repo;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class UserRepoTest {
 
@@ -17,11 +17,11 @@ public class UserRepoTest {
 
     @Test
     public void shouldReturnTrueGivenMatchedLibraryNumAndPassword() throws Exception {
-        assertTrue(userRepo.checkLibraryNumAndPasswordMatch("111-1111","111"));
+        assertNotNull(userRepo.checkLibraryNumAndPasswordMatch("111-1111","111"));
     }
 
     @Test
     public void shouldReturnFalseGivenMatchedLibraryNumAndPassword() throws Exception {
-        assertFalse(userRepo.checkLibraryNumAndPasswordMatch("xxx","xxx"));
+        assertNull(userRepo.checkLibraryNumAndPasswordMatch("xxx","xxx"));
     }
 }

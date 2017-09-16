@@ -1,6 +1,7 @@
 package com.twu.biblioteca.model.command;
 
 import com.twu.biblioteca.io.IOInterface;
+import com.twu.biblioteca.repo.CurrentUser;
 import com.twu.biblioteca.service.LibraryService;
 
 import static com.twu.biblioteca.model.entity.Constant.ALERT_NO_AVAIL_BOOKS;
@@ -8,9 +9,6 @@ import static com.twu.biblioteca.model.entity.Constant.RENT_BOOK_NOTICE;
 import static com.twu.biblioteca.model.entity.Constant.RENT_BOOK_SUCCESS_NOTICE;
 import static com.twu.biblioteca.model.entity.Constant.RENT_BOOK_WARNING;
 
-/**
- * Created by rsma on 16/09/2017.
- */
 public class RentBookCommand implements Command {
 
     private IOInterface io;
@@ -35,6 +33,10 @@ public class RentBookCommand implements Command {
 
     @Override
     public void execute() {
+        if(!CurrentUser.isCurrentUserLogin()){
+            Login login = new Login(io);
+            login.execute();
+        }
         if (!libraryService.isExistActiveBooks()) {
             outputNoActiveBooks();
         } else {

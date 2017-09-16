@@ -1,5 +1,6 @@
 package com.twu.biblioteca.service;
 
+import com.twu.biblioteca.model.entity.User;
 import com.twu.biblioteca.repo.UserRepo;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +21,7 @@ public class UserServiceTest {
 
     @Test
     public void shouldCallCheckLibraryNumAndPasswordMatch() throws Exception {
-        when(userRepo.checkLibraryNumAndPasswordMatch("1","1")).thenReturn(true);
+        when(userRepo.checkLibraryNumAndPasswordMatch("1","1")).thenReturn(new User());
         userService.checkLibraryNumAndPasswordMatch("1","1");
         verify(userRepo).checkLibraryNumAndPasswordMatch("1","1");
     }

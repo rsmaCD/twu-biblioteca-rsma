@@ -1,6 +1,7 @@
 package com.twu.biblioteca.model.command;
 
 import com.twu.biblioteca.io.IOInterface;
+import com.twu.biblioteca.model.entity.User;
 import com.twu.biblioteca.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,12 +22,12 @@ public class LoginCommandTest {
     private UserService userService;
 
     @InjectMocks
-    private LoginCommand loginCommand = new LoginCommand(io);
+    private Login loginCommand = new Login(io);
 
     @Test
     public void shouldCallUserServiceToCheckLibraryNumAndPasswordMatch() throws Exception {
         when(io.getInput()).thenReturn("1");
-        when(userService.checkLibraryNumAndPasswordMatch("1","1")).thenReturn(true);
+        when(userService.checkLibraryNumAndPasswordMatch("1","1")).thenReturn(new User());
         loginCommand.execute();
         verify(userService).checkLibraryNumAndPasswordMatch("1","1");
     }

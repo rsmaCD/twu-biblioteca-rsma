@@ -2,19 +2,20 @@ package com.twu.biblioteca.model.command;
 
 import com.twu.biblioteca.io.IOInterface;
 import com.twu.biblioteca.model.entity.Constant;
+import com.twu.biblioteca.model.entity.User;
+import com.twu.biblioteca.repo.CurrentUser;
 import com.twu.biblioteca.service.UserService;
 
-public class LoginCommand implements Command {
+public class Login {
 
     private IOInterface io;
 
     private UserService userService = new UserService();
 
-    public LoginCommand(IOInterface io) {
+    public Login(IOInterface io) {
         this.io = io;
     }
 
-    @Override
     public void execute() {
         outputLoginNotice();
         login();
@@ -26,8 +27,10 @@ public class LoginCommand implements Command {
         outputInputPasswordNotice();
         String password = io.getInput();
 
-        if (userService.checkLibraryNumAndPasswordMatch(libraryNum, password)) {
+        User user = userService.checkLibraryNumAndPasswordMatch(libraryNum, password);
+        if (user != null) {
             outputSuccessNotice();
+            CurrentUser.getInstance().setCurrentUser(user);
         } else {
             outputError();
             login();

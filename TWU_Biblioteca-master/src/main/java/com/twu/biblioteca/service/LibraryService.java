@@ -9,7 +9,7 @@ public class LibraryService {
 
     private Library library = Library.getInstance();
 
-    public List<Book> getAllActiveBooks(){
+    public List<Book> getAllActiveBooks() {
         return library.getActiveBooks();
     }
 
