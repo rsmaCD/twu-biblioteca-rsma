@@ -13,6 +13,7 @@ import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -25,13 +26,15 @@ public class LibraryServiceTest {
 
     @Test
     public void shouldReturnAllActiveBooksWhenCallGetAllActiveBooks() throws Exception {
-
         ArrayList<Book> books = new ArrayList<>();
         when(library.getActiveBooks()).thenReturn(books);
         List<Book> allActiveBooks = libraryService.getAllActiveBooks();
         assertThat(allActiveBooks,is(books));
-
     }
 
-
+    @Test
+    public void shouldCallRentBook() throws Exception {
+        when(library.rentBook("xxx")).thenReturn(true);
+        assertTrue(libraryService.rentBook("xxx"));
+    }
 }

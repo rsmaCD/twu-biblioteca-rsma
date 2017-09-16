@@ -6,6 +6,7 @@ public class KeyPad {
     private ListBooksCommand listBooksCommand;
     private ExitCommand exitCommand;
     private NoCommand noCommand;
+    private RentBookCommand rentBookCommand;
 
     public void setMainMenuCommand(MainMenuCommand mainMenuCommand) {
         this.mainMenuCommand = mainMenuCommand;
@@ -23,6 +24,10 @@ public class KeyPad {
         this.noCommand = noCommand;
     }
 
+    public void setRentBookCommand(RentBookCommand rentBookCommand) {
+        this.rentBookCommand = rentBookCommand;
+    }
+
     public void listBooks(){
         listBooksCommand.execute();
     }
@@ -38,4 +43,6 @@ public class KeyPad {
     public void showNoCommandErrorMsg(){
         noCommand.execute();
     }
+
+    public void rentBooks(){rentBookCommand.execute();}
 }

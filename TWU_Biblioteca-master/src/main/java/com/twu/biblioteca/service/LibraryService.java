@@ -12,4 +12,8 @@ public class LibraryService {
     public List<Book> getAllActiveBooks(){
         return library.getActiveBooks();
     }
+
+    public boolean rentBook(String bookName) {
+        return library.rentBook(bookName);
+    }
 }

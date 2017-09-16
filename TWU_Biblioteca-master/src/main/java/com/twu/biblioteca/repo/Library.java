@@ -4,6 +4,7 @@ import com.twu.biblioteca.model.entity.Book;
 import com.twu.biblioteca.model.enums.RentStatus;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static java.util.Arrays.asList;
@@ -30,22 +31,33 @@ public class Library {
         library.setBooks(books);
     }
 
-    public List<Book> getActiveBooks(){
+    public List<Book> getActiveBooks() {
         return books
                 .stream()
                 .filter(book -> book.getRentStatus().equals(RentStatus.NOT_ON_RENT))
                 .collect(Collectors.toList());
     }
 
-    public List<Book> getInactiveBooks(){
+    public List<Book> getInactiveBooks() {
         return books
                 .stream()
                 .filter(book -> book.getRentStatus().equals(RentStatus.ON_RENT))
                 .collect(Collectors.toList());
     }
 
+    public boolean rentBook(String bookName) {
+        List<Book> books = getActiveBooks();
+        if (!books.isEmpty()) {
+            Optional<Book> book = books.stream().filter(bookTemp -> bookTemp.getBookName().equals(bookName)).findFirst();
+            if (book.isPresent()) {
+                book.get().setRentStatus(RentStatus.ON_RENT);
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void setBooks(List<Book> books) {
         this.books = books;
     }
-
 }
