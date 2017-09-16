@@ -37,4 +37,10 @@ public class LibraryServiceTest {
         when(library.rentBook("xxx")).thenReturn(true);
         assertTrue(libraryService.rentBook("xxx"));
     }
+
+    @Test
+    public void shouldCallReturnBook() throws Exception {
+        when(library.returnBook("xxx")).thenReturn(true);
+        assertTrue(libraryService.returnBook("xxx"));
+    }
 }

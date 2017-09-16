@@ -46,4 +46,14 @@ public class LibraryTest {
     public void shouldReturnTrueGivenActiveBook() throws Exception {
         assertTrue(library.rentBook("book_1"));
     }
+
+    @Test
+    public void shouldReturnFalseGivenNotOnRentBook() throws Exception {
+        assertFalse(library.returnBook("book_1"));
+    }
+
+    @Test
+    public void shouldReturnTrueGivenOnRentBook() throws Exception {
+        assertTrue(library.returnBook("book_4"));
+    }
 }

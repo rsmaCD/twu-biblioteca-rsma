@@ -3,6 +3,7 @@ package com.twu;
 import com.twu.biblioteca.io.ConsoleIO;
 import com.twu.biblioteca.io.IOInterface;
 import com.twu.biblioteca.model.command.RentBookCommand;
+import com.twu.biblioteca.model.command.ReturnBookCommand;
 import com.twu.biblioteca.model.entity.Constant;
 import com.twu.biblioteca.model.entity.Command;
 import com.twu.biblioteca.model.command.ExitCommand;
@@ -21,6 +22,7 @@ public class BibliotecaApp {
     private ExitCommand exitCommand;
     private NoCommand noCommand;
     private RentBookCommand rentBookCommand;
+    private ReturnBookCommand returnBookCommand;
 
     private KeyPad keyPad = new KeyPad();
 
@@ -33,12 +35,14 @@ public class BibliotecaApp {
         exitCommand = new ExitCommand(IO);
         noCommand = new NoCommand(IO);
         rentBookCommand = new RentBookCommand(IO);
+        returnBookCommand = new ReturnBookCommand(IO);
 
         keyPad.setExitCommand(exitCommand);
         keyPad.setListBooksCommand(listBooksCommand);
         keyPad.setMainMenuCommand(mainMenuCommand);
         keyPad.setNoCommand(noCommand);
         keyPad.setRentBookCommand(rentBookCommand);
+        keyPad.setReturnBookCommand(returnBookCommand);
     }
 
     public static void main(String[] args) {
@@ -69,7 +73,11 @@ public class BibliotecaApp {
                 keyPad.showMenu();
                 break;
             case Command.RENT_BOOK:
-                keyPad.rentBooks();
+                keyPad.rentBook();
+                keyPad.showMenu();
+                break;
+            case Command.RETURN_BOOK:
+                keyPad.returnBook();
                 keyPad.showMenu();
                 break;
             case Command.Exit:

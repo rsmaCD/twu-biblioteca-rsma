@@ -16,4 +16,8 @@ public class LibraryService {
     public boolean rentBook(String bookName) {
         return library.rentBook(bookName);
     }
+
+    public boolean returnBook(String bookName) {
+        return library.returnBook(bookName);
+    }
 }

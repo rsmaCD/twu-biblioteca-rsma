@@ -57,6 +57,18 @@ public class Library {
         return false;
     }
 
+    public boolean returnBook(String bookName) {
+        List<Book> books = getInactiveBooks();
+        if (!books.isEmpty()) {
+            Optional<Book> book = books.stream().filter(bookTemp -> bookTemp.getBookName().equals(bookName)).findFirst();
+            if (book.isPresent()) {
+                book.get().setRentStatus(RentStatus.NOT_ON_RENT);
+                return true;
+            }
+        }
+        return false;
+    }
+
     private void setBooks(List<Book> books) {
         this.books = books;
     }
