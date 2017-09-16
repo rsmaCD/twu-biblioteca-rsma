@@ -12,7 +12,7 @@ public class Constant {
 
     public static final String ERROR_COMMAND_MSG = "Select a valid option!\n";
 
-    public static final String ALERT_NO_AVAIL_BOOKS = "No available books in library!\n";
+    public static final String ALERT_NO_AVAIL_BOOKS = "No available books in library.\n";
 
     public static final String RENT_BOOK_NOTICE = "Please input the name of book to checkout:\n";
     public static final String RENT_BOOK_WARNING = "The book is not available.\n";

@@ -11,7 +11,9 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.util.Collections.singletonList;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.when;
@@ -42,5 +44,19 @@ public class LibraryServiceTest {
     public void shouldCallReturnBook() throws Exception {
         when(library.returnBook("xxx")).thenReturn(true);
         assertTrue(libraryService.returnBook("xxx"));
+    }
+
+    @Test
+    public void shouldReturnFalseWhenNoActiveBookInLibrary() throws Exception {
+        ArrayList<Book> books = new ArrayList<>();
+        when(library.getActiveBooks()).thenReturn(books);
+        assertFalse(libraryService.isExistActiveBooks());
+    }
+
+    @Test
+    public void shouldReturnTrueWhenHasActiveBookInLibrary() throws Exception {
+        List<Book> books = singletonList(new Book());
+        when(library.getActiveBooks()).thenReturn(books);
+        assertTrue(libraryService.isExistActiveBooks());
     }
 }

@@ -4,9 +4,6 @@ import com.twu.biblioteca.io.IOInterface;
 import com.twu.biblioteca.model.entity.Constant;
 import com.twu.biblioteca.service.LibraryService;
 
-/**
- * Created by rsma on 16/09/2017.
- */
 public class ReturnBookCommand implements Command{
 
     private IOInterface io;

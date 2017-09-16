@@ -8,12 +8,10 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
-/**
- * Created by rsma on 16/09/2017.
- */
 @RunWith(MockitoJUnitRunner.class)
 public class RentBookCommandTest {
 
@@ -27,10 +25,18 @@ public class RentBookCommandTest {
     private RentBookCommand rentBookCommand = new RentBookCommand(io);
 
     @Test
-    public void shouldCallLibraryService() throws Exception {
+    public void shouldCallLibraryServiceToGetAllAvailableBooks() throws Exception {
         when(io.getInput()).thenReturn("xxx");
         when(libraryService.rentBook("xxx")).thenReturn(true);
+        when(libraryService.isExistActiveBooks()).thenReturn(true);
         rentBookCommand.execute();
         verify(libraryService).rentBook("xxx");
+    }
+
+    @Test
+    public void shouldNotCallLibraryServiceToGetAllAvailableBooks() throws Exception {
+        when(libraryService.isExistActiveBooks()).thenReturn(false);
+        rentBookCommand.execute();
+        verify(libraryService, never()).rentBook("xxx");
     }
 }

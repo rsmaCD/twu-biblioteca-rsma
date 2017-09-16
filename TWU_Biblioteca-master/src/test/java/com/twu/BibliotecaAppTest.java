@@ -7,10 +7,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class BibliotecaAppTest {
 
@@ -18,26 +17,28 @@ public class BibliotecaAppTest {
     private String fileNameOutputTemplate = "outputTemplate.txt";
 
     @Test
-    public void should_get_output_equal_to_outputtemplate() throws Exception {
+    public void shouldGetOutputEqualToOutputtemplate() throws Exception {
         FileIO io = new FileIO();
         BibliotecaApp app = new BibliotecaApp(io);
         app.init(io);
         app.run();
 
-        List<String> output = new ArrayList<>();
-        List<String> outputTemplate = new ArrayList<>();
+        String output = null;
+        String outputTemplate = null;
 
         try {
             output = Files.lines(Paths.get(this.fileNameOutput), StandardCharsets.UTF_8)
-                    .collect(java.util.stream.Collectors.toList());
+                    .reduce("", (sum, item) -> sum + item +"\n");
 
             outputTemplate = Files.lines(Paths.get(this.fileNameOutputTemplate), StandardCharsets.UTF_8)
-                    .collect(java.util.stream.Collectors.toList());
+                    .reduce("", (sum, item) -> sum + item +"\n");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        assertNotNull(output);
+        assertNotNull(outputTemplate);
         assertEquals(output,outputTemplate);
     }
 

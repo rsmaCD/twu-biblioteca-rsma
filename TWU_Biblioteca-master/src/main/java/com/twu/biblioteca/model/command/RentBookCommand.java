@@ -7,7 +7,7 @@ import com.twu.biblioteca.service.LibraryService;
 /**
  * Created by rsma on 16/09/2017.
  */
-public class RentBookCommand implements Command{
+public class RentBookCommand implements Command {
 
     private IOInterface io;
 
@@ -17,29 +17,33 @@ public class RentBookCommand implements Command{
         this.io = io;
     }
 
-    private void outputNotice(){
+    private void outputNotice() {
         io.output(Constant.RENT_BOOK_NOTICE);
     }
 
-    private void outputWarning(){
+    private void outputWarning() {
         io.output(Constant.RENT_BOOK_WARNING);
     }
 
-    private void outputSuccessNotice(){
+    private void outputSuccessNotice() {
         io.output(Constant.RENT_BOOK_SUCCESS_NOTICE);
     }
 
     @Override
     public void execute() {
-        outputNotice();
-        rentBook();
+        if (!libraryService.isExistActiveBooks()) {
+            io.output(Constant.ALERT_NO_AVAIL_BOOKS);
+        } else {
+            outputNotice();
+            rentBook();
+        }
     }
 
     private void rentBook() {
         String bookName = io.getInput();
-        if(libraryService.rentBook(bookName)){
+        if (libraryService.rentBook(bookName)) {
             outputSuccessNotice();
-        }else {
+        } else {
             outputWarning();
             rentBook();
         }

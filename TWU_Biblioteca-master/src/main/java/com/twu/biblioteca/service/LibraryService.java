@@ -20,4 +20,8 @@ public class LibraryService {
     public boolean returnBook(String bookName) {
         return library.returnBook(bookName);
     }
+
+    public boolean isExistActiveBooks() {
+        return library.getActiveBooks().size() != 0;
+    }
 }
