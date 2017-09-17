@@ -12,4 +12,12 @@ public class MovieService {
     public List<Movie> getAllActiveMovies() {
         return movieRepo.getAllActiveMovies();
     }
+
+    public boolean isExistActiveMovies() {
+        return getAllActiveMovies().size() != 0;
+    }
+
+    public boolean rentMovie(String movieName) {
+        return movieRepo.rentMovie(movieName);
+    }
 }

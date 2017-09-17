@@ -127,3 +127,24 @@ Thank you for returning the book.
 5. Return Book
 6. View User Info
 7. Exit
+Please input the name of movie to checkout:
+The movie is not available.
+Thank you! Enjoy the movie.
+******* Menu *******
+1. List Books
+2. List Movies
+3. Checkout Book
+4. Checkout Movie
+5. Return Book
+6. View User Info
+7. Exit
+  movie_2  2002  diector_2   2
+  movie_4  2004  diector_4   unrated
+******* Menu *******
+1. List Books
+2. List Movies
+3. Checkout Book
+4. Checkout Movie
+5. Return Book
+6. View User Info
+7. Exit

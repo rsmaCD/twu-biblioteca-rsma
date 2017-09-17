@@ -39,4 +39,6 @@ public class RentBookCommandTest {
         rentBookCommand.execute();
         verify(libraryService, never()).rentBook("xxx");
     }
+
+
 }

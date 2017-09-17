@@ -4,8 +4,10 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class MovieRepoTest {
 
@@ -28,5 +30,13 @@ public class MovieRepoTest {
         assertThat(movieRepo.getAllActiveMovies().size(),is(3));
     }
 
+    @Test
+    public void shouldReturnFalseGivenInactiveBook() throws Exception {
+        assertFalse(movieRepo.rentMovie("xxx"));
+    }
 
+    @Test
+    public void shouldReturnTrueGivenActiveBook() throws Exception {
+        assertTrue(movieRepo.rentMovie("movie_1"));
+    }
 }

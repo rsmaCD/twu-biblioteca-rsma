@@ -58,6 +58,10 @@ public class BibliotecaApp {
                 keyPad.rentBook();
                 keyPad.showMenu();
                 break;
+            case Command.RENT_MOVIES:
+                keyPad.rentMovie();
+                keyPad.showMenu();
+                break;
             case Command.RETURN_BOOK:
                 keyPad.returnBook();
                 keyPad.showMenu();

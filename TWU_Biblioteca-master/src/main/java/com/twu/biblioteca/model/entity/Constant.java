@@ -30,4 +30,8 @@ public class Constant {
     public static final String LOGIN_SUCCESS_NOTICE = "Login success.\n";
     public static final String INPUT_LIBRARY_NUM_NOTICE = "Please input your library number:\n";
     public static final String INPUT_PASSWORD_NOTICE = "Please input your password:\n";
+
+    public static final String RENT_MOVIE_NOTICE = "Please input the name of movie to checkout:\n";
+    public static final String RENT_MOVIE_SUCCESS_NOTICE = "Thank you! Enjoy the movie.\n";
+    public static final String RENT_MOVIE_WARNING = "The movie is not available.\n";
 }

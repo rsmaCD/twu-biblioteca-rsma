@@ -35,4 +35,16 @@ public class MovieRepo {
                 .filter(movie -> movie.getRentStatus().equals(RentStatus.NOT_ON_RENT))
                 .collect(Collectors.toList());
     }
+
+    public boolean rentMovie(String movieName) {
+        for (Movie movie : movies) {
+            if(movie.getMovieName().equals(movieName)){
+                if (movie.getRentStatus().equals(RentStatus.NOT_ON_RENT)){
+                    movie.setRentStatus(RentStatus.ON_RENT);
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }

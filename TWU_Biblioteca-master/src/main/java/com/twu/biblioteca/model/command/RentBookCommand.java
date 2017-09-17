@@ -33,10 +33,6 @@ public class RentBookCommand implements Command {
         }
     }
 
-    private void outputNoActiveBooks() {
-        io.output(ALERT_NO_AVAIL_BOOKS);
-    }
-
     private void rentBook() {
         String bookName = io.getInput();
         if (libraryService.rentBook(bookName)) {
