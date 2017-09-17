@@ -66,6 +66,10 @@ public class BibliotecaApp {
                 keyPad.returnBook();
                 keyPad.showMenu();
                 break;
+            case Command.VIEW_USER_INFO:
+                keyPad.viewUserInfo();
+                keyPad.showMenu();
+                break;
             case Command.Exit:
                 keyPad.exit();
                 break;

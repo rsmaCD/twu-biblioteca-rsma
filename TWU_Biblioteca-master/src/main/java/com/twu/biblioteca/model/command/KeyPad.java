@@ -12,6 +12,7 @@ public class KeyPad {
     private ReturnBookCommand returnBookCommand;
     private ListMoviesCommand listMoviesCommand;
     private RentMovieCommand rentMovieCommand;
+    private ViewUserInfoCommand viewUserInfoCommand;
 
     public KeyPad(IOInterface IO) {
         mainMenuCommand = new MainMenuCommand(IO);
@@ -22,6 +23,7 @@ public class KeyPad {
         returnBookCommand = new ReturnBookCommand(IO);
         listMoviesCommand = new ListMoviesCommand(IO);
         rentMovieCommand = new RentMovieCommand(IO);
+        viewUserInfoCommand = new ViewUserInfoCommand(IO);
     }
 
 
@@ -48,4 +50,6 @@ public class KeyPad {
     public void listMovies(){listMoviesCommand.execute();}
 
     public void rentMovie(){rentMovieCommand.execute();}
+
+    public void viewUserInfo(){viewUserInfoCommand.execute();}
 }

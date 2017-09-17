@@ -148,3 +148,12 @@ Thank you! Enjoy the movie.
 5. Return Book
 6. View User Info
 7. Exit
+  user_1  111@email.com  1111
+******* Menu *******
+1. List Books
+2. List Movies
+3. Checkout Book
+4. Checkout Movie
+5. Return Book
+6. View User Info
+7. Exit
