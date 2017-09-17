@@ -23,13 +23,13 @@ public class ListBooksCommand implements Command {
     }
 
     private void ListBooks() {
-        if (!libraryService.isExistActiveBooks()) {
-            io.output(Constant.ALERT_NO_AVAIL_BOOKS);
-        } else {
-            List<Book> allActiveBooks = libraryService.getAllActiveBooks();
+        List<Book> allActiveBooks = libraryService.getAllActiveBooks();
+        if (allActiveBooks.size() != 0) {
             for (Book book : allActiveBooks) {
                 io.output(book.toString());
             }
+        } else {
+            io.output(Constant.ALERT_NO_AVAIL_BOOKS);
         }
     }
 }

@@ -5,16 +5,17 @@ import com.twu.biblioteca.model.entity.User;
 public class CurrentUser {
 
     private static final CurrentUser currentUser = new CurrentUser();
-    private static User user = null;
+    private User user = null;
+
     public static CurrentUser getInstance() {
         return currentUser;
     }
 
-    public void setCurrentUser(User user){
+    public void setCurrentUser(User user) {
         this.user = user;
     }
 
-    public static boolean isCurrentUserLogin(){
+    public boolean isCurrentUserLogin() {
         return user != null;
     }
 }

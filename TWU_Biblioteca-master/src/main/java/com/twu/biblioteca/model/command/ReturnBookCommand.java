@@ -15,34 +15,22 @@ public class ReturnBookCommand implements Command{
         this.io = io;
     }
 
-    private void outputNotice(){
-        io.output(Constant.RETURN_BOOK_NOTICE);
-    }
-
-    private void outputWarning(){
-        io.output(Constant.RETURN_BOOK_WARNING);
-    }
-
-    private void outputSuccessNotice(){
-        io.output(Constant.RETURN_BOOK_SUCCESS_NOTICE);
-    }
-
     @Override
     public void execute() {
-        if(!CurrentUser.isCurrentUserLogin()){
+        if(!CurrentUser.getInstance().isCurrentUserLogin()){
             Login login = new Login(io);
             login.execute();
         }
-        outputNotice();
+        io.output(Constant.RETURN_BOOK_NOTICE);
         returnBook();
     }
 
     private void returnBook() {
         String bookName = io.getInput();
         if(libraryService.returnBook(bookName)){
-            outputSuccessNotice();
+            io.output(Constant.RETURN_BOOK_SUCCESS_NOTICE);
         }else {
-            outputWarning();
+            io.output(Constant.RETURN_BOOK_WARNING);
             returnBook();
         }
     }

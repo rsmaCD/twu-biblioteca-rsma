@@ -22,6 +22,6 @@ public class LibraryService {
     }
 
     public boolean isExistActiveBooks() {
-        return library.getActiveBooks().size() != 0;
+        return getAllActiveBooks().size() != 0;
     }
 }

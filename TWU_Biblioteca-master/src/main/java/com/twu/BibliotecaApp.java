@@ -6,6 +6,7 @@ import com.twu.biblioteca.model.command.KeyPad;
 import com.twu.biblioteca.model.entity.Command;
 import com.twu.biblioteca.model.entity.Constant;
 import com.twu.biblioteca.repo.Library;
+import com.twu.biblioteca.repo.MovieRepo;
 import com.twu.biblioteca.repo.UserRepo;
 
 public class BibliotecaApp {
@@ -31,6 +32,7 @@ public class BibliotecaApp {
         io.Start();
         Library.getInstance().initLibrary();
         UserRepo.getInstance().initUserRepo();
+        MovieRepo.getInstance().initMovieRepo();
         io.output(Constant.WELCOME_MSG);
     }
 
@@ -46,6 +48,10 @@ public class BibliotecaApp {
         switch (input) {
             case Command.LIST_BOOKS:
                 keyPad.listBooks();
+                keyPad.showMenu();
+                break;
+            case Command.LIST_MOVIES:
+                keyPad.listMovies();
                 keyPad.showMenu();
                 break;
             case Command.RENT_BOOK:

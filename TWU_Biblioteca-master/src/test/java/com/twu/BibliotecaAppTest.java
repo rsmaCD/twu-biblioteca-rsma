@@ -27,11 +27,9 @@ public class BibliotecaAppTest {
         String outputTemplate = null;
 
         try {
-            output = Files.lines(Paths.get(this.fileNameOutput), StandardCharsets.UTF_8)
-                    .reduce("", (sum, item) -> sum + item +"\n");
+            output = getFileContent(this.fileNameOutput);
 
-            outputTemplate = Files.lines(Paths.get(this.fileNameOutputTemplate), StandardCharsets.UTF_8)
-                    .reduce("", (sum, item) -> sum + item +"\n");
+            outputTemplate = getFileContent(this.fileNameOutputTemplate);
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -40,6 +38,11 @@ public class BibliotecaAppTest {
         assertNotNull(output);
         assertNotNull(outputTemplate);
         assertEquals(outputTemplate,output);
+    }
+
+    private String getFileContent(String filePath) throws IOException {
+        return Files.lines(Paths.get(filePath), StandardCharsets.UTF_8)
+                .reduce("", (sum, item) -> sum + item +"\n");
     }
 
 }

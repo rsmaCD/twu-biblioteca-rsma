@@ -19,28 +19,16 @@ public class RentBookCommand implements Command {
         this.io = io;
     }
 
-    private void outputNotice() {
-        io.output(RENT_BOOK_NOTICE);
-    }
-
-    private void outputWarning() {
-        io.output(RENT_BOOK_WARNING);
-    }
-
-    private void outputSuccessNotice() {
-        io.output(RENT_BOOK_SUCCESS_NOTICE);
-    }
-
     @Override
     public void execute() {
-        if(!CurrentUser.isCurrentUserLogin()){
+        if(!CurrentUser.getInstance().isCurrentUserLogin()){
             Login login = new Login(io);
             login.execute();
         }
         if (!libraryService.isExistActiveBooks()) {
-            outputNoActiveBooks();
+            io.output(ALERT_NO_AVAIL_BOOKS);
         } else {
-            outputNotice();
+            io.output(RENT_BOOK_NOTICE);
             rentBook();
         }
     }
@@ -52,9 +40,9 @@ public class RentBookCommand implements Command {
     private void rentBook() {
         String bookName = io.getInput();
         if (libraryService.rentBook(bookName)) {
-            outputSuccessNotice();
+            io.output(RENT_BOOK_SUCCESS_NOTICE);
         } else {
-            outputWarning();
+            io.output(RENT_BOOK_WARNING);
             rentBook();
         }
     }

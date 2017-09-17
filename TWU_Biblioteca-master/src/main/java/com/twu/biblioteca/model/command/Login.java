@@ -17,43 +17,23 @@ public class Login {
     }
 
     public void execute() {
-        outputLoginNotice();
+        io.output(Constant.LOGIN_NOTICE);
         login();
     }
 
     private void login() {
-        outputInputLibraryNumNotice();
+        io.output(Constant.INPUT_LIBRARY_NUM_NOTICE);
         String libraryNum = io.getInput();
-        outputInputPasswordNotice();
+        io.output(Constant.INPUT_PASSWORD_NOTICE);
         String password = io.getInput();
 
         User user = userService.checkLibraryNumAndPasswordMatch(libraryNum, password);
         if (user != null) {
-            outputSuccessNotice();
+            io.output(Constant.LOGIN_SUCCESS_NOTICE);
             CurrentUser.getInstance().setCurrentUser(user);
         } else {
-            outputError();
+            io.output(Constant.LOGIN_ERROR);
             login();
         }
-    }
-
-    private void outputLoginNotice() {
-        io.output(Constant.LOGIN_NOTICE);
-    }
-
-    private void outputInputLibraryNumNotice() {
-        io.output(Constant.INPUT_LIBRARY_NUM_NOTICE);
-    }
-
-    private void outputInputPasswordNotice() {
-        io.output(Constant.INPUT_PASSWORD_NOTICE);
-    }
-
-    private void outputError() {
-        io.output(Constant.LOGIN_ERROR);
-    }
-
-    private void outputSuccessNotice() {
-        io.output(Constant.LOGIN_SUCCESS_NOTICE);
     }
 }
