@@ -10,6 +10,7 @@ public class ReturnBookCommand implements Command{
     private IOInterface io;
 
     private LibraryService libraryService = new LibraryService();
+    private CurrentUser instance = CurrentUser.getInstance();
 
     public ReturnBookCommand(IOInterface io) {
         this.io = io;
@@ -17,7 +18,7 @@ public class ReturnBookCommand implements Command{
 
     @Override
     public void execute() {
-        if(!CurrentUser.getInstance().isCurrentUserLogin()){
+        if(!instance.isCurrentUserLogin()){
             Login login = new Login(io);
             login.execute();
         }

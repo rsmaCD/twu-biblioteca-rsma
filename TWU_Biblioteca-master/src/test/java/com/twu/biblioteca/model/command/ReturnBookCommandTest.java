@@ -14,8 +14,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class RentBookCommandTest {
-
+public class ReturnBookCommandTest {
     @Mock
     private IOInterface io;
 
@@ -26,24 +25,14 @@ public class RentBookCommandTest {
     private CurrentUser instance;
 
     @InjectMocks
-    private RentBookCommand rentBookCommand = new RentBookCommand(io);
+    private ReturnBookCommand returnBookCommand = new ReturnBookCommand(io);
 
     @Test
-    public void shouldCallLibraryServiceToGetAllAvailableBooks() throws Exception {
+    public void shouldCallLibraryServiceToReturnBook() throws Exception {
         when(instance.isCurrentUserLogin()).thenReturn(true);
         when(io.getInput()).thenReturn("xxx");
-        when(libraryService.isExistActiveBooks()).thenReturn(true);
-        when(libraryService.rentBook("xxx")).thenReturn(true);
-        rentBookCommand.execute();
-        verify(libraryService).rentBook("xxx");
+        when(libraryService.returnBook("xxx")).thenReturn(true);
+        returnBookCommand.execute();
+        verify(libraryService).returnBook("xxx");
     }
-
-    @Test
-    public void shouldNotCallLibraryServiceToGetAllAvailableBooks() throws Exception {
-        when(libraryService.isExistActiveBooks()).thenReturn(false);
-        when(instance.isCurrentUserLogin()).thenReturn(true);
-        rentBookCommand.execute();
-        verify(libraryService, never()).rentBook("xxx");
-    }
-
 }

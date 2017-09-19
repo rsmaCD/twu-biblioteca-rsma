@@ -19,6 +19,12 @@ public class CurrentUser {
         this.principal = principal;
     }
 
+    private CurrentUser(){}
+
+    public void clearUser(){
+        principal = null;
+    }
+
     public Principal getCurrentUser() {
         return principal;
     }

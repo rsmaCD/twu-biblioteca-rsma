@@ -14,15 +14,17 @@ public class RentBookCommand implements Command {
     private IOInterface io;
 
     private LibraryService libraryService = new LibraryService();
+    private CurrentUser instance = CurrentUser.getInstance();
+    private Login login ;
 
     public RentBookCommand(IOInterface io) {
         this.io = io;
+        login = new Login(io);
     }
 
     @Override
     public void execute() {
-        if(!CurrentUser.getInstance().isCurrentUserLogin()){
-            Login login = new Login(io);
+        if(!instance.isCurrentUserLogin()){
             login.execute();
         }
         if (!libraryService.isExistActiveBooks()) {
