@@ -9,11 +9,11 @@ import java.util.List;
 
 import static java.nio.file.StandardOpenOption.APPEND;
 
-public class FileIO implements IOInterface {
+public class FileIO implements IOInterface { //this class is only use for test, you can move it to test folder
 
     private List<String> inputList = new ArrayList<>();
     private int location = -1;
-    private String fileNameInput = "input.txt";
+    private String fileNameInput = "input.txt"; // can be extract as constant
     private String fileNameTarget = "output.txt";
 
     private boolean runStatus = true;
@@ -48,7 +48,7 @@ public class FileIO implements IOInterface {
     @Override
     public void exit() {
         this.runStatus = false;
-    }
+    } // I don't think IO class should maintain the status of whole application, it should maintain by app class self or independent class
 
     @Override
     public boolean getRunStatus() {
