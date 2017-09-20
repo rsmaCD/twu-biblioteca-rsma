@@ -23,7 +23,7 @@ public class Book {
 
     public int getBookId() {
         return bookId;
-    }
+    } // can remove useless getter and setter
 
     public void setBookId(int bookId) {
         this.bookId = bookId;

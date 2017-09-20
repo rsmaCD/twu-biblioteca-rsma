@@ -41,7 +41,7 @@ public class BibliotecaApp {
         }
     }
 
-    private void executeCommand(String input) {
+    private void executeCommand(String input) { // so many switch cases
         switch (input) {
             case Command.LIST_BOOKS:
                 keyPad.listBooks();

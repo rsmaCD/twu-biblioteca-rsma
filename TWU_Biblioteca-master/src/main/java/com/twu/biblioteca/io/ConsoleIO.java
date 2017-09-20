@@ -20,11 +20,11 @@ public class ConsoleIO implements IOInterface {
 
     @Override
     public void exit() {
-        System.exit(0);
+        System.exit(0); // should set run status as false.
     }
 
     @Override
     public boolean getRunStatus() {
-        return true;
+        return true; // always return true, the run status is meaningless.
     }
 }
